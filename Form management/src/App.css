@@ -1,0 +1,50 @@
+/* management */
+
+.form-manage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table,tr,td,th{
+    border: 1px solid black;
+    border-collapse:collapse ;
+}
+
+td,th{
+    padding: 20px;
+}
+
+.input-form input{
+    padding: 10px 20px 10px 20px;
+}
+
+.input-form{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 42.3rem;
+}
+
+.input-form input{
+    border: none;
+    outline: none;
+}
+
+/* formpage */
+
+.formpage{
+    position: fixed;
+    top: 500px;
+    left: 700px;
+}
+
+.formpage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
