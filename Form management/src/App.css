@@ -56,16 +56,43 @@ td,th{
     border-radius: 12px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
+    min-width: 350px;
 }
 
-.formpage .form-content .inside-form{
-    display: flex;
-    gap: 20px;
-}
+
 
 .formpage .form-content .inside-form .title{
     margin-right: 40px;
+   width: 300px;
+}
+
+.formpage .form-content .inside-form .input input{
+    border: 1px solid black;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    width: 300px;
+}
+
+.formpage .form-content button{
+    background-color: rgb(60, 172, 238);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    font-weight: bold;
+    width: 322px;
+}
+
+.formpage .form-content button:hover{
+    background-color: rgb(41, 95, 204);
+    
 }
 /* navbar */
 
@@ -95,16 +122,17 @@ nav div a {
     font-size: 20px;
 }
 
-/* login page */
+/* login form */
 
-.login-page{
+.login-form{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
+    width: 100%;
 }
 
-.login-page form{
+.login-form form{
     background-color: #800080;
     padding: 80px 130px 100px 130px;
     border-radius: 10px;
@@ -113,7 +141,7 @@ nav div a {
     gap: 30px;
 }
 
-.login-page form input{
+.login-form form input{
     width: 250px;
     height: 32px;
     border-radius: 10px;
@@ -122,7 +150,7 @@ nav div a {
     outline: none;
 }
 
-.login-page form .login-button button{
+.login-form form .login-button button{
     width: 100%;
     height: 30px;
     background-color: #4394c7;
@@ -131,22 +159,22 @@ nav div a {
     border-radius: 20px;
 }
 
-.login-page form .login-button button:hover{
+.login-form form .login-button button:hover{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.login-page .title{
+.login-form .title{
     text-align: center;
     color: white;
     font-size:30px;
     font-weight: bold;
 }
 
-.login-page .register-link{
+.login-form .register-link{
     text-align: center;
 }
 
-.login-page .register-link a{
+.login-form .register-link a{
     color: white;
     font-size: medium;
 }
@@ -176,3 +204,65 @@ nav div a {
     padding: 5px;
     border-radius: 5px;
 }
+
+/* footer */
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    gap: 15px;
+}
+
+.socialmedia-icons{
+    font-size: 20px;
+    display: flex;
+    gap: 100px;
+}
+
+.copyright{
+    display: flex;
+    gap: 10px;
+}
+
+
+/* slider */
+
+.slideshow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.slideshowSlider{
+    border-radius: 20px;
+    height: 500px;
+    width: 500px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: ease 1000ms;
+}
+
+.slideshow .slideshowSlider .slide{
+    height: 500px;
+    width: 500px;
+    transition: all 2s;
+}
+
+.slideshow .buttons{
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+/* login page */
+
+.login-page{
+    display: grid;  
+    grid-template-columns: 1fr 1fr;
+}
+

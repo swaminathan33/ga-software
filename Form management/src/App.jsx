@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Master from "./pages/Master";
 import Navbar from "./Components/Navbar";
 import LoginPage from "./pages/LoginPage";
+import Footer from "./Components/Footer";
 const App = () => {
   return (
     <div>
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/manageform" element={<Management />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

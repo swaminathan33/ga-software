@@ -30,7 +30,7 @@ const FormPage = () => {
                   <label htmlFor="">{item.title}</label>
                 </div>
                 {item.required ? (
-                  <div>
+                  <div className="input">
                     <input
                       type={item.inputType}
                       placeholder={item.title}
@@ -40,7 +40,7 @@ const FormPage = () => {
                     />
                   </div>
                 ) : (
-                  <div>
+                  <div className="input">
                     <input
                       type={item.inputType}
                       placeholder={item.title}
