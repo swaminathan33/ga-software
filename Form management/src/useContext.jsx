@@ -1,8 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
+  const [logout, setLogout] = useState(false);
+
   const [form, setForm] = useState([
     {
       id: 101,
@@ -29,9 +31,16 @@ const AppProvider = ({ children }) => {
       showForm: false,
     },
   ]);
+  useEffect(() => {
+    localStorage.setItem("form", JSON.stringify(form));
+  }, [form]);
 
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("form"));
+    setForm(data);
+  }, []);
   return (
-    <AppContext.Provider value={{ form, setForm }}>
+    <AppContext.Provider value={{ form, setForm, logout, setLogout }}>
       {children}
     </AppContext.Provider>
   );

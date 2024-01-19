@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import FormPage from "./FormPage";
 import { useGlobalContext } from "../useContext";
+import { Link } from "react-router-dom";
 
 const Management = () => {
   const { form, setForm } = useGlobalContext();
+
+  const [addField, setAddField] = useState(false);
+  const [addFieldButton, setAddFieldButton] = useState(true);
 
   const [title, setTitle] = useState("");
   const [select, setSelect] = useState("number");
@@ -26,6 +30,8 @@ const Management = () => {
     setSelect("");
     setForm([...form, newForm]);
     setPlaceholder("");
+    setAddField(false);
+    setAddFieldButton(true);
   };
 
   const handleDelete = (id) => {
@@ -56,6 +62,11 @@ const Management = () => {
     setForm(newForm);
   };
 
+  const handleAddForm = () => {
+    setAddField(true);
+    setAddFieldButton(false);
+  };
+
   return (
     <div className="form-manage">
       <h3>Customize Signup Form</h3>
@@ -83,12 +94,14 @@ const Management = () => {
                 <td>
                   <input
                     type="checkbox"
+                    checked={item.required ? true : false}
                     onChange={() => handleRequired(item.id)}
                   />
                 </td>
                 <td>
                   <input
                     type="checkbox"
+                    checked={item.showForm ? true : false}
                     onChange={() => handleShowForm(item.id)}
                   />
                 </td>
@@ -98,45 +111,52 @@ const Management = () => {
         </tbody>
       </table>
       {/* adding elements using this form */}
-
-      <form action="" onSubmit={handleSubmit}>
-        <div className="input-form">
-          <div>
-            <input
-              type="text"
-              placeholder="title"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-            />
+      {addFieldButton ? (
+        <button onClick={handleAddForm}>+ New Field</button>
+      ) : (
+        ""
+      )}
+      {addField ? (
+        <form action="" onSubmit={handleSubmit}>
+          <div className="input-form">
+            <div>
+              <input
+                type="text"
+                placeholder="title"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+              />
+            </div>
+            <div>
+              <select
+                name=""
+                id=""
+                onChange={(e) => setSelect(e.target.value)}
+                value={select}
+              >
+                <option value="number">Number</option>
+                <option value="text">Text</option>
+                <option value="email">Email</option>
+                <option value="password">Password</option>
+              </select>
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="maximum 80 character"
+                maxlength="80"
+                onChange={(e) => setPlaceholder(e.target.value)}
+                value={placeholder}
+              />
+            </div>
+            <div>
+              <button type="submit">submit</button>
+            </div>
           </div>
-          <div>
-            <select
-              name=""
-              id=""
-              onChange={(e) => setSelect(e.target.value)}
-              value={select}
-            >
-              <option value="number">Number</option>
-              <option value="text">Text</option>
-              <option value="email">Email</option>
-              <option value="password">Password</option>
-            </select>
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="placeholder"
-              onChange={(e) => setPlaceholder(e.target.value)}
-              value={placeholder}
-            />
-          </div>
-          <div>
-            <button type="submit">submit</button>
-          </div>
-        </div>
-      </form>
-
-      <FormPage />
+        </form>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
