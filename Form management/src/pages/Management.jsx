@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import FormPage from "./FormPage";
 import { useGlobalContext } from "../useContext";
 import { Link } from "react-router-dom";
+import FieldValue from "../Components/FieldValue";
 
 const Management = () => {
-  const { form, setForm } = useGlobalContext();
+  const { form, setForm, setAddFieldValue, addFieldValue } = useGlobalContext();
 
   const [addField, setAddField] = useState(false);
   const [addFieldButton, setAddFieldButton] = useState(true);
-
   const [title, setTitle] = useState("");
   const [select, setSelect] = useState("number");
   const [placeholder, setPlaceholder] = useState("");
@@ -24,6 +24,7 @@ const Management = () => {
       placeholder: placeholder,
       showForm: showForm,
       requiredField: requiredField,
+      fieldValue: select === "dropdown" ? true : false,
     };
 
     setTitle("");
@@ -76,6 +77,7 @@ const Management = () => {
           <tr>
             <th>First Name</th>
             <th>Field Type</th>
+            <th>Field Value</th>
             <th>Field Placeholder</th>
             <th>Required Field</th>
             <th>Show in Form</th>
@@ -90,6 +92,18 @@ const Management = () => {
                   <button onClick={() => handleDelete(item.id)}>x</button>
                 </td>
                 <td>{item.inputType}</td>
+                <td>
+                  {item.fieldValue ? (
+                    <div>
+                      <button onClick={() => setAddFieldValue(true)}>
+                        Add
+                      </button>
+                      {addFieldValue ? <FieldValue /> : ""}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </td>
                 <td>{item.placeholder}</td>
                 <td>
                   <input
@@ -138,6 +152,8 @@ const Management = () => {
                 <option value="text">Text</option>
                 <option value="email">Email</option>
                 <option value="password">Password</option>
+                <option value="dropdown">Dropdown</option>
+                <option value="checkbox">Check box</option>
               </select>
             </div>
             <div>

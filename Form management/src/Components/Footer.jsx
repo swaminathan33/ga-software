@@ -7,7 +7,7 @@ import { FaRegCopyright } from "react-icons/fa";
 
 const Footer = () => {
   if (useLocation().pathname == "/login") {
-    return <div></div>;
+    return null;
   }
 
   return (

@@ -80,6 +80,7 @@ const LoginForm = () => {
               type="text"
               onChange={(e) => setUserCaptcha(e.target.value)}
               value={userCaptcha}
+              className="captcha-input"
             />
             {invalidCaptcha ? (
               <div style={{ textAlign: "center", color: "white" }}>
