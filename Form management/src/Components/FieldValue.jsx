@@ -51,7 +51,7 @@ const FieldValue = () => {
               />
               <button type="submit">Add</button>
             </form>
-            {fieldValuesDropdown.map((item, index) => {
+            {dropdown.map((item, index) => {
               return <h5 key={index}>{item}</h5>;
             })}
           </div>

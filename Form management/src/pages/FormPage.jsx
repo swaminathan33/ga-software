@@ -7,26 +7,49 @@ const FormPage = () => {
   // const dropdown = fieldValues.dropdown;
   const handelSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    const name = e.target.name;
+    const name2 = name.replace(/\s/g, "");
+    const name3 = name2.toLowerCase();
+
+    setDetails((prev) => ({
+      ...prev,
+      [name3]: e.target.value,
+    }));
+
+    console.log("details", details);
   };
+  const [maleChecked, setMaleChecked] = useState(false);
+  const [femaleChecked, setFemaleChecked] = useState(false);
 
   const [submitted, setSubmitted] = useState(false);
-  const [gender, setGender] = useState({
-    male: null,
-    female: null,
+  const [details, setDetails] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    dateofbirth: "",
+    adharcardnumber: 0,
+    panNumber: null,
+    occupation: "",
+    gender: "",
   });
-
   const handleForm = (e) => {
     e.preventDefault();
     setSubmitted(true);
+    if (details.adharcardnumber.toString().length !== 16) {
+      console.log("Wrong adhar number");
+    }
   };
 
   const handleCheckbox = (e) => {
-    setGender({
-      ...gender,
-      [e.target.name]: true,
-    });
-    console.log(gender);
+    if (e.target.name == "male") {
+      setMaleChecked(true);
+      setFemaleChecked(false);
+    } else if (e.target.name == "female") {
+      setFemaleChecked(true);
+      setMaleChecked(false);
+    }
+    console.log("Male -> ", maleChecked, "Female -> ", femaleChecked);
   };
 
   return (
@@ -49,6 +72,7 @@ const FormPage = () => {
                           type="radio"
                           onChange={handleCheckbox}
                           name="male"
+                          checked={maleChecked}
                         />
                         Male
                       </label>
@@ -57,8 +81,9 @@ const FormPage = () => {
                           type="radio"
                           name="female"
                           onChange={handleCheckbox}
+                          checked={femaleChecked}
                         />
-                        FeMale
+                        Female
                       </label>
                     </form>
                   </div>
@@ -83,6 +108,7 @@ const FormPage = () => {
                 ) : item.required ? (
                   <div className="input">
                     <input
+                      name={item.title}
                       type={item.inputType}
                       placeholder={item.placeholder}
                       required
@@ -93,8 +119,10 @@ const FormPage = () => {
                 ) : (
                   <div className="input">
                     <input
+                      name={item.title}
                       type={item.inputType}
                       placeholder={item.placeholder}
+                      onChange={handelSubmit}
                       maxLength="80"
                     />
                   </div>

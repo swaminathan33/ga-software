@@ -81,6 +81,15 @@ const AppProvider = ({ children }) => {
       showForm: true,
       fieldValue: "fieldValue",
     },
+    {
+      id: 308,
+      title: "Gender",
+      inputType: "checkbox",
+      placeholder: "",
+      required: false,
+      showForm: true,
+      fieldValue: "fieldValue",
+    },
   ]);
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(form));
