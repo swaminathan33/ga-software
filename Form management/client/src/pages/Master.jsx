@@ -3,7 +3,6 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import bgImage1 from "../Components/image1.jpg";
 import bgImage2 from "../Components/image2.jpg";
 import bgImage3 from "../Components/image3.jpg";
-import styled from "styled-components";
 
 const Master = () => {
   const location = useLocation();
